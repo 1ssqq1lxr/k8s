@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: distribution-web
+  namespace: distribution
+spec:
+  rules:
+    - host: k8s.distribution.web
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: distribution-web
+              servicePort: 8080
+      
+          

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: distribution-web
+  namespace: distribution
+  labels:
+    app: distribution-web
+spec:
+  selector:
+    app: distribution-web
+  ports:
+    - name: web-port
+      port:  8080
+      targetPort: 80
+      protocol: TCP  

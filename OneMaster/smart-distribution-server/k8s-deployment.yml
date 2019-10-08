@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distribution
+  namespace: distribution
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: distribution
+      version: 'v1'
+  template:
+    metadata:
+      labels:
+        app: distribution
+        version: 'v1'
+    spec:
+      containers:
+        - name: distribution-app
+          image: 192.168.100.32:9777/distribution/distribution:latest
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: swagger,no-liquibase,test
+          ports:
+          - containerPort: 8080
+            protocol: TCP   
+          - containerPort: 8081
+            protocol: TCP                                  

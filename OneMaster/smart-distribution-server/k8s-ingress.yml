@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s
+  namespace: distribution
+spec:
+  rules:
+    - host: k8s.distribution
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: distribution
+              servicePort: 8080
+      
+          
